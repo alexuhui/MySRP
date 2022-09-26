@@ -7,6 +7,11 @@ public class CustomRenderPipeline : RenderPipeline
 {
     CameraRenderer renderer = new CameraRenderer();
 
+    /// <summary>
+    /// 根据引擎给的上下文，遍历相机进行渲染
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="cameras"></param>
     protected override void Render(ScriptableRenderContext context, Camera[] cameras)
     {
         foreach (Camera camera in cameras)

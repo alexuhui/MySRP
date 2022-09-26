@@ -54,7 +54,7 @@ public partial class CameraRenderer
             flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear
         );
         //buffer.ClearRenderTarget(true, true, Color.clear);
-        buffer.BeginSample(bufferName);
+        buffer.BeginSample(SampleName);
         //buffer.ClearRenderTarget(true, true, Color.clear);
         ExecuteBuffer();
         //context.SetupCameraProperties(camera);
@@ -84,7 +84,7 @@ public partial class CameraRenderer
 
     void Submit()
     {
-        buffer.EndSample(bufferName);
+        buffer.EndSample(SampleName);
         ExecuteBuffer();
         context.Submit();
     }

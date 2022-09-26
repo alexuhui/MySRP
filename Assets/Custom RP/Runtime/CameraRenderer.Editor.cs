@@ -17,6 +17,9 @@ public partial class CameraRenderer
         new ShaderTagId("VertexLM")
     };
     static Material errorMaterial;
+    string SampleName;
+#else
+    const string SampleName = bufferName;
 #endif
 
     [Conditional("UNITY_EDITOR")]
@@ -62,6 +65,6 @@ public partial class CameraRenderer
     [Conditional("UNITY_EDITOR")]
     void PrepareBuffer()
     {
-        buffer.name = camera.name;
+        buffer.name = SampleName = camera.name;
     }
 }
