@@ -1,6 +1,16 @@
 {
   "dependencies": {
     "com.unity.ide.visualstudio": "2.0.16",
+    "com.unity.render-pipelines.core": "12.1.7",
     "com.unity.ugui": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "cn",
+      "url": "https://packages.unity.cn",
+      "scopes": [
+        "com"
+      ]
+    }
+  ]
 }
