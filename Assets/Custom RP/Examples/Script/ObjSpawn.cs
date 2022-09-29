@@ -24,6 +24,12 @@ public class ObjSpawn : MonoBehaviour
             int col = i % maxRow - half;
             int row = i / maxRow;
             obj.transform.localPosition = new Vector3(col, row*0.2f, row);
+
+            var property = obj.AddComponent<PerObjectMaterialProperties>();
+            byte r = (byte)Random.Range(0,256);
+            byte g = (byte)Random.Range(0,256);
+            byte b = (byte)Random.Range(0,256);
+            property.baseColor = new Color32(r, g, b, 255);
         }
     }
 

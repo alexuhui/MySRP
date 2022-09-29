@@ -7,6 +7,14 @@ public class CustomRenderPipeline : RenderPipeline
 {
     CameraRenderer renderer = new CameraRenderer();
 
+
+    public CustomRenderPipeline()
+    {
+        //开启SRP Batcher
+        GraphicsSettings.useScriptableRenderPipelineBatching = true;
+    }
+
+
     /// <summary>
     /// 根据引擎给的上下文，遍历相机进行渲染
     /// </summary>
