@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class PerObjectMaterialProperties : MonoBehaviour
 {
     static int baseColorId = Shader.PropertyToID("_BaseColor");
@@ -27,6 +27,8 @@ public class PerObjectMaterialProperties : MonoBehaviour
             block = new MaterialPropertyBlock();
         }    
         block.SetColor(baseColorId, baseColor);
+
+        Debug.Log(block.GetHashCode());
         renderer.SetPropertyBlock(block);
     }
 
