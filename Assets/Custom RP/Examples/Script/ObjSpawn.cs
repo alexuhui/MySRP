@@ -29,7 +29,7 @@ public class ObjSpawn : MonoBehaviour
             byte r = (byte)Random.Range(0,256);
             byte g = (byte)Random.Range(0,256);
             byte b = (byte)Random.Range(0,256);
-            property.baseColor = new Color32(r, g, b, 255);
+            //property.baseColor = new Color32(r, g, b, 255);
         }
     }
 
