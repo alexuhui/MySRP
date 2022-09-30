@@ -8,6 +8,7 @@ public class ObjSpawn : MonoBehaviour
     [Range(1, 10000)]
     public int Count = 76;
     public Material[] Materials;
+    public int MaxMatIndex;
 
     [ContextMenu("Spawn")]
     public void Spawn()
@@ -19,7 +20,9 @@ public class ObjSpawn : MonoBehaviour
         {
             var obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             var render = obj.GetComponent<MeshRenderer>();
-            render.sharedMaterial = Materials[Random.Range(0, Materials.Length)];
+            var mat = Materials[Random.Range(0, Mathf.Min(MaxMatIndex, Materials.Length))];
+            render.sharedMaterial = mat;
+            obj.name = mat.name;
             obj.transform.SetParent(transform, false);
             int col = i % maxRow - half;
             int row = i / maxRow;
@@ -29,7 +32,8 @@ public class ObjSpawn : MonoBehaviour
             byte r = (byte)Random.Range(0,256);
             byte g = (byte)Random.Range(0,256);
             byte b = (byte)Random.Range(0,256);
-            //property.baseColor = new Color32(r, g, b, 255);
+            property.baseColor = new Color32(r, g, b, 255);
+            property.RefreshBlock();
         }
     }
 

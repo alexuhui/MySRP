@@ -14,13 +14,15 @@ public class PerObjectMaterialProperties : MonoBehaviour
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
         RefreshBlock();
     }
 
-    private void RefreshBlock()
+    public void RefreshBlock()
     {
-        if (renderer == null) return;
+        if(renderer == null)
+        {
+            renderer = GetComponent<Renderer>();
+        }
 
         if (block == null)
         {
