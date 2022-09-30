@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[DisallowMultipleComponent]
 public class PerObjectMaterialProperties : MonoBehaviour
 {
     static int baseColorId = Shader.PropertyToID("_BaseColor");

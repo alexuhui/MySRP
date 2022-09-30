@@ -15,7 +15,7 @@ public partial class CameraRenderer
 
     static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
 
-    public void Render(ScriptableRenderContext context, Camera camera)
+    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
     {
         this.context = context;
         this.camera = camera;
@@ -26,7 +26,7 @@ public partial class CameraRenderer
 
         Setup();
 
-        DrawVisibleGeometry();
+        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         DrawUnsupportedShaders();
         DrawGizmos();
 
@@ -61,19 +61,21 @@ public partial class CameraRenderer
     }
     
 
-    void DrawVisibleGeometry()
+    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing)
     {
         // 首先渲染不透明物体
         SortingSettings sortingSettings = new SortingSettings(camera);
         sortingSettings.criteria = SortingCriteria.CommonOpaque;
 
         // 这么写是不对的，看了源码才发现带参数的构造函数里面很多初始化代码
-        // 最初这么写的想法是：当有多个unlitShaderTagId时直接通过for循环SetShaderPassName
+        // 这么写的初衷是：当有多个unlitShaderTagId时直接通过for循环SetShaderPassName
         // 看起来工整一些
         //DrawingSettings drawingSettings = new DrawingSettings();
         //drawingSettings.sortingSettings = sortingSettings;
         //drawingSettings.SetShaderPassName(0, unlitShaderTagId);
         var drawingSettings = new DrawingSettings(unlitShaderTagId, sortingSettings);
+        drawingSettings.enableDynamicBatching = useDynamicBatching;
+        drawingSettings.enableInstancing = useGPUInstancing;
 
         FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);

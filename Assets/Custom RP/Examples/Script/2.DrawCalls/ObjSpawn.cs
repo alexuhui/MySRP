@@ -10,6 +10,11 @@ public class ObjSpawn : MonoBehaviour
     public Material[] Materials;
     public int MaxMatIndex;
 
+    private void Awake()
+    {
+        Spawn();
+    }
+
     [ContextMenu("Spawn")]
     public void Spawn()
     {
