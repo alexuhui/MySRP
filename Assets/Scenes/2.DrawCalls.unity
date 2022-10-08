@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: cff927a08c6606f4fb16983751334559, type: 2}
   - {fileID: 2100000, guid: 386d9fda4bf4c6d42a72aaeeeb74a37e, type: 2}
   - {fileID: 2100000, guid: 967f236febb0240418a11087d5218ebd, type: 2}
-  MaxMatIndex: 0
+  MaxMatIndex: 3
 --- !u!4 &377045220
 Transform:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1876255996
 Transform:
   m_ObjectHideFlags: 0

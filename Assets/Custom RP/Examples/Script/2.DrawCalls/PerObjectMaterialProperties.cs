@@ -6,11 +6,14 @@ using UnityEngine;
 public class PerObjectMaterialProperties : MonoBehaviour
 {
     static int baseColorId = Shader.PropertyToID("_BaseColor");
+    static int cutoffId = Shader.PropertyToID("_Cutoff");
     static MaterialPropertyBlock block;
 
     new Renderer renderer;
 
     public Color baseColor = Color.white;
+    [Range(0,1)]
+    public float cutoff = 0.5f;
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class PerObjectMaterialProperties : MonoBehaviour
 
         renderer.GetPropertyBlock(block);
         block.SetColor(baseColorId, baseColor);
+        block.SetFloat(cutoffId, cutoff);
         renderer.SetPropertyBlock(block);
     }
 

@@ -34,10 +34,12 @@ public class ObjSpawn : MonoBehaviour
             obj.transform.localPosition = new Vector3(col, row*0.2f, row);
 
             var property = obj.AddComponent<PerObjectMaterialProperties>();
-            byte r = (byte)Random.Range(0,256);
-            byte g = (byte)Random.Range(0,256);
-            byte b = (byte)Random.Range(0,256);
-            property.baseColor = new Color32(r, g, b, 255);
+            float r = Random.Range(0f,1f);
+            float g = Random.Range(0f,1f);
+            float b = Random.Range(0f,1f);
+            float a = Random.Range(0.5f,1f);
+            property.baseColor = new Color(r, g, b, a);
+            property.cutoff = Random.Range(0.2f, 0.7f);
             property.RefreshBlock();
         }
     }
