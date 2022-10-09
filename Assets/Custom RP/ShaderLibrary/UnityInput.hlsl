@@ -14,4 +14,6 @@
 
 	float4x4 unity_MatrixPreviousM;
 	float4x4 unity_MatrixPreviousMI;
+
+	float3 _WorldSpaceCameraPos;
 #endif

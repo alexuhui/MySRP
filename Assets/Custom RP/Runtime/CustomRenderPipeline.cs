@@ -16,6 +16,7 @@ public class CustomRenderPipeline : RenderPipeline
 
         //¿ªÆôSRP Batcher
         GraphicsSettings.useScriptableRenderPipelineBatching = useSRPBatcher;
+        GraphicsSettings.lightsUseLinearIntensity = true;
     }
 
 
