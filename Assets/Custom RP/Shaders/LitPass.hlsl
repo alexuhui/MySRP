@@ -70,9 +70,13 @@
 		surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
 		surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
 
-		BRDF brdf = GetBRDF(surface);
-		half3 color = GetLighting(surface, brdf);
+		#if defined(_PREMULTIPLY_ALPHA)
+			BRDF brdf = GetBRDF(surface, true);
+		#else
+			BRDF brdf = GetBRDF(surface);
+		#endif
 
+		half3 color = GetLighting(surface, brdf);
 		return half4(color, surface.alpha);
 	}
 
